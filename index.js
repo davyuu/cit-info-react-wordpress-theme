@@ -36051,7 +36051,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 						className: 'connect-form-input',
 						type: 'number',
 						name: 'phone',
-						placeholder: '1234567890',
+						placeholder: '4161234567',
 						value: this.state.phone,
 						onChange: e => this.setState({ phone: e.target.value })
 					}),
