@@ -7713,7 +7713,7 @@ exports.default = _matchPath2.default; // Written in this round about way for ba
 "use strict";
 const routes = {
 	home: '/',
-	message: '/message',
+	message: '/messages',
 	news: '/news',
 	giving: '/giving',
 	groups: '/groups',
@@ -31336,7 +31336,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n  padding: 0;\n  font-family: 'Lato', sans-serif;\n  -webkit-text-size-adjust: 100%;\n}\n", ""]);
+exports.push([module.i, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-family: 'Lato', sans-serif;\r\n  -webkit-text-size-adjust: 100%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -35287,7 +35287,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".section {\n  height: 5em;\n  display: flex;\n  align-items: center;\n  text-decoration: none;\n}\n\n.section-img {\n  width: 2.5em;\n  margin: 1em;\n}\n\n.section-title {\n  font-size: 1.4em;\n  font-weight: 700;\n  color: black;\n}\n", ""]);
+exports.push([module.i, ".section {\r\n  height: 5em;\r\n  display: flex;\r\n  align-items: center;\r\n  text-decoration: none;\r\n}\r\n\r\n.section-img {\r\n  width: 2.5em;\r\n  margin: 1em;\r\n}\r\n\r\n.section-title {\r\n  font-size: 1.4em;\r\n  font-weight: 700;\r\n  color: black;\r\n}\r\n", ""]);
 
 // exports
 
@@ -35347,7 +35347,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".separator {\n    width: 100%;\n    height: 2px;\n    margin: auto;\n    border-radius: 5px;\n    background-color: rgba(0, 0, 0, 0.3);\n}\n", ""]);
+exports.push([module.i, ".separator {\r\n    width: 100%;\r\n    height: 2px;\r\n    margin: auto;\r\n    border-radius: 5px;\r\n    background-color: rgba(0, 0, 0, 0.3);\r\n}\r\n", ""]);
 
 // exports
 
@@ -35392,7 +35392,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".home-header {\n  padding-top: 2em;\n  color: white;\n}\n\n.home-title-container {\n  width: 4.5em;\n  height: 4.5em;\n  margin: 0 auto;\n  padding: 1.5em;\n  border-radius: 50%;\n  background-color: #5bff60;\n}\n\n.home-title {\n  text-align: center;\n  vertical-align: middle;\n  font-size: 3.5em;\n  font-weight: 900;\n  margin: 0;\n}\n\n.home-content {\n  padding: 1em;\n}\n", ""]);
+exports.push([module.i, ".home-header {\r\n  padding-top: 2em;\r\n  color: white;\r\n}\r\n\r\n.home-title-container {\r\n  width: 4.5em;\r\n  height: 4.5em;\r\n  margin: 0 auto;\r\n  padding: 1.5em;\r\n  border-radius: 50%;\r\n  background-color: #5bff60;\r\n}\r\n\r\n.home-title {\r\n  text-align: center;\r\n  vertical-align: middle;\r\n  font-size: 3.5em;\r\n  font-weight: 900;\r\n  margin: 0;\r\n}\r\n\r\n.home-content {\r\n  padding: 1em;\r\n}\r\n", ""]);
 
 // exports
 
@@ -35593,7 +35593,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".loading {\n\n}\n.loading-text {\n    text-align: center;\n    margin-top: 50%;\n    font-size: 2em;\n    font-weight: 700;\n}\n", ""]);
+exports.push([module.i, ".loading {\r\n\r\n}\r\n.loading-text {\r\n    text-align: center;\r\n    margin-top: 50%;\r\n    font-size: 2em;\r\n    font-weight: 700;\r\n}\r\n", ""]);
 
 // exports
 
@@ -35638,7 +35638,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".header-bar {\n    height: 3.2em;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n.header-bar-back-button {\n    height: 2em;\n    width: 2em;\n    padding: 0.5em;\n}\n.header-bar-title {\n    font-size: 1.25em;\n    font-weight: 700;\n    margin: auto;\n    color: white;\n}\n", ""]);
+exports.push([module.i, ".header-bar {\r\n    height: 3.2em;\r\n    width: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n.header-bar-back-button {\r\n    height: 2em;\r\n    width: 2em;\r\n    padding: 0.5em;\r\n}\r\n.header-bar-title {\r\n    font-size: 1.25em;\r\n    font-weight: 700;\r\n    margin: auto;\r\n    color: white;\r\n}\r\n", ""]);
 
 // exports
 
@@ -35683,7 +35683,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".message-header-container {\n  position: relative;\n}\n\n.message-header-img {\n  max-width: 100%;\n}\n\n.message-header-tabs {\n  position: absolute;\n  bottom: 0;\n}\n\n.message-tab {\n  float: left;\n  padding-bottom: 0.6em;\n  margin-left: 2em;\n  font-size: 0.75em;\n  font-weight: 600;\n  color: white;\n  border-bottom: 0.8em solid;\n}\n\n.message-active-tab {\n  border-bottom-color: rgba(255, 255, 255, 0.7);\n}\n\n.message-inactive-tab {\n  opacity: 0.5;\n  border-bottom-color: transparent;\n}\n\n.message-container {\n  padding: 1.2em;\n}\n\n.message-title {\n  margin: 0;\n  padding: 0;\n  font-size: 2.3em;\n  font-weight: 500;\n}\n\n.message-number-chapter {\n  font-size: 0.9em;\n  font-weight: 500;\n  margin: 0 0 1em 0;\n  color: grey;\n}\n\n.message-html {}\n\n.message-html h1, h2, h3, h4, h5, h6 {\n  font-size: 1.3em;\n  font-weight: 500;\n  margin: 1em 0 0 0;\n}\n\n.message-html ol {\n  margin: 0 1.5em;\n  padding: 0;\n  list-style-type: upper-alpha;\n  font-size: 0.92em;\n}\n\n.message-html ol span {\n  margin: 0 0 0 0.3em;\n}\n\n.message-html ol li {\n  margin: 0.5em 0 0 0;\n}\n\n.message-html ol ol {\n  margin: 0 0 0 1em;\n  padding: 0;\n  list-style-type: decimal;\n}\n\n.message-html ol ol li {\n  margin: 0.2em 0 0 0;\n  padding: 0;\n}\n", ""]);
+exports.push([module.i, ".message-header-container {\r\n  position: relative;\r\n}\r\n\r\n.message-header-img {\r\n  max-width: 100%;\r\n}\r\n\r\n.message-header-tabs {\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n\r\n.message-tab {\r\n  float: left;\r\n  padding-bottom: 0.6em;\r\n  margin-left: 2em;\r\n  font-size: 0.75em;\r\n  font-weight: 600;\r\n  color: white;\r\n  border-bottom: 0.8em solid;\r\n}\r\n\r\n.message-active-tab {\r\n  border-bottom-color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.message-inactive-tab {\r\n  opacity: 0.5;\r\n  border-bottom-color: transparent;\r\n}\r\n\r\n.message-container {\r\n  padding: 1.2em;\r\n}\r\n\r\n.message-title {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 2.3em;\r\n  font-weight: 500;\r\n}\r\n\r\n.message-number-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0 0 1em 0;\r\n  color: grey;\r\n}\r\n\r\n.message-html {}\r\n\r\n.message-html h1, h2, h3, h4, h5, h6 {\r\n  font-size: 1.3em;\r\n  font-weight: 500;\r\n  margin: 1em 0 0 0;\r\n}\r\n\r\n.message-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: upper-alpha;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.message-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.message-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.message-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n}\r\n\r\n.message-html ol ol li {\r\n  margin: 0.2em 0 0 0;\r\n  padding: 0;\r\n}\r\n", ""]);
 
 // exports
 
@@ -35823,7 +35823,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".giving-container {\n  padding: 1.5em;\n}\n\n.giving-title {\n  width: 70%;\n  margin: 0;\n  font-size: 2.2em;\n  font-weight: 500;\n}\n\n.giving-description {\n  margin: 1em 0;\n  font-size: 0.9em;\n  font-weight: 500;\n  line-height: 1.5em;\n}\n\n.giving-btn {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n  padding: 1em 0;\n  margin: 2em 0;\n  border-radius: 0.3em;\n  font-size: 1em;\n  color: white;\n  text-decoration: none;\n}\n", ""]);
+exports.push([module.i, ".giving-container {\r\n  padding: 1.5em;\r\n}\r\n\r\n.giving-title {\r\n  width: 70%;\r\n  margin: 0;\r\n  font-size: 2.2em;\r\n  font-weight: 500;\r\n}\r\n\r\n.giving-description {\r\n  margin: 1em 0;\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  line-height: 1.5em;\r\n}\r\n\r\n.giving-btn {\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n  padding: 1em 0;\r\n  margin: 2em 0;\r\n  border-radius: 0.3em;\r\n  font-size: 1em;\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n", ""]);
 
 // exports
 
@@ -40568,7 +40568,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".connect {}\n\n.connect-container {\n  padding: 1.5em;\n}\n\n.connect-title {\n  width: 70%;\n  margin: 0;\n  font-size: 2em;\n  font-weight: 500;\n}\n\n.connect-description {\n  font-size: 0.9em;\n  font-weight: 500;\n}\n\n.connect-form-label {\n  margin: 0;\n  font-size: 0.8em;\n}\n\n.connect-form-input {\n  width: 95.5%;\n  height: 1.5em;\n  margin: 0.5em 0 1em 0;\n  padding: 0.5em;\n  border-style: solid;\n  border-width: 1px;\n  border-radius: 4px;\n  border-color: #ccc;\n  -webkit-appearance: none;\n  font-size: 0.8em;\n  font-weight: 500;\n  font-family: 'Lato', sans-serif;\n}\n\n.connect-form-select {\n  margin: 0.5em 0 1em 0;\n  font-size: 0.8em;\n  font-weight: 500;\n  font-family: 'Lato', sans-serif;\n}\n\n.connect-form-textarea {\n  width: 95.5%;\n  height: 6em;\n  margin: 0.5em 0 1em 0;\n  padding: 0.5em;\n  border-width: 1px;\n  border-radius: 0.3em;\n  border-color: lightgray;\n  -webkit-appearance: none;\n  font-size: 0.8em;\n  font-weight: 500;\n  font-family: 'Lato', sans-serif;\n}\n\n.connect-form-submit {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n  padding: 0.8em 0;\n  margin: 1em 0;\n  border-radius: 0.3em;\n  text-decoration: none;\n  font-size: 01em;\n  color: white;\n}\n", ""]);
+exports.push([module.i, ".connect {}\r\n\r\n.connect-container {\r\n  padding: 1.5em;\r\n}\r\n\r\n.connect-title {\r\n  width: 70%;\r\n  margin: 0;\r\n  font-size: 2em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-description {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-form-label {\r\n  margin: 0;\r\n  font-size: 0.8em;\r\n}\r\n\r\n.connect-form-input {\r\n  width: 95.5%;\r\n  height: 1.5em;\r\n  margin: 0.5em 0 1em 0;\r\n  padding: 0.5em;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  border-radius: 4px;\r\n  border-color: #ccc;\r\n  -webkit-appearance: none;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-select {\r\n  margin: 0.5em 0 1em 0;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-textarea {\r\n  width: 95.5%;\r\n  height: 6em;\r\n  margin: 0.5em 0 1em 0;\r\n  padding: 0.5em;\r\n  border-width: 1px;\r\n  border-radius: 0.3em;\r\n  border-color: lightgray;\r\n  -webkit-appearance: none;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-submit {\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n  padding: 0.8em 0;\r\n  margin: 1em 0;\r\n  border-radius: 0.3em;\r\n  text-decoration: none;\r\n  font-size: 01em;\r\n  color: white;\r\n}\r\n", ""]);
 
 // exports
 
@@ -40613,7 +40613,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".switch-wrapper {\n  position: relative;\n}\n\n.switch-wrapper > div {\n  position: absolute;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".switch-wrapper {\r\n  position: relative;\r\n}\r\n\r\n.switch-wrapper > div {\r\n  position: absolute;\r\n  width: 100%;\r\n}\r\n", ""]);
 
 // exports
 
