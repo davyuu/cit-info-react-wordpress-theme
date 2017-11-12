@@ -36377,13 +36377,17 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 			email: '',
 			phone: '',
 			description: '',
-			message: ''
+			message: '',
+			sending: false
 		};
 	}
 
 	onConnectFormSubmit() {
-		if (this.isFormValid()) {
-			this.createPerson();
+		if (!this.state.sending) {
+			this.setState({ sending: true });
+			if (this.isFormValid()) {
+				this.createPerson();
+			}
 		}
 	}
 
@@ -36554,7 +36558,11 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 	}
 
 	showError(msg) {
-		this.msg.error(msg);
+		this.msg.error(msg, {
+			onClose: () => {
+				this.setState({ sending: false });
+			}
+		});
 		// Alert.error(msg, {
 		// 	position: 'bottom-right',
 		//   effect: 'slide',
@@ -36564,6 +36572,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 	}
 
 	showSuccess(msg, onClose) {
+		this.setState({ sending: false });
 		this.msg.success('Successfully sent', { onClose });
 		// Alert.success(msg, {
 		// 	position: 'bottom-right',
