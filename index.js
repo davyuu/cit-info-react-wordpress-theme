@@ -53277,41 +53277,35 @@ exports.default = Switch;
 
 
 const Home = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-	'div',
-	{ className: 'home' },
-	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-		'div',
-		{ className: 'home-header' },
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'home-title-container-img', dangerouslySetInnerHTML: { __html: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].banner } }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'home-title-logo-img', dangerouslySetInnerHTML: { __html: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].logo } })
-	),
-	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-		'div',
-		{ className: 'home-content' },
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Section__["a" /* default */], {
-			title: 'Latest Message',
-			image: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].message,
-			linkTo: __WEBPACK_IMPORTED_MODULE_1__constants_routes__["a" /* default */].message
-		}),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_SectionSeparator__["a" /* default */], null),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Section__["a" /* default */], {
-			title: 'What\'s Happening',
-			image: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].whatsHappening,
-			linkTo: __WEBPACK_IMPORTED_MODULE_1__constants_routes__["a" /* default */].news
-		}),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_SectionSeparator__["a" /* default */], null),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Section__["a" /* default */], {
-			title: 'Giving',
-			image: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].giving,
-			linkTo: __WEBPACK_IMPORTED_MODULE_1__constants_routes__["a" /* default */].giving
-		}),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_SectionSeparator__["a" /* default */], null),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Section__["a" /* default */], {
-			title: 'Connect',
-			image: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].connect,
-			linkTo: __WEBPACK_IMPORTED_MODULE_1__constants_routes__["a" /* default */].connect
-		})
-	)
+  'div',
+  { className: 'home' },
+  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { className: 'home-header' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'home-title-container-img', dangerouslySetInnerHTML: { __html: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].banner } }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'home-title-logo-img', dangerouslySetInnerHTML: { __html: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].logo } })
+  ),
+  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { className: 'home-content' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Section__["a" /* default */], {
+      title: 'Latest Message',
+      image: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].message,
+      linkTo: __WEBPACK_IMPORTED_MODULE_1__constants_routes__["a" /* default */].message
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_SectionSeparator__["a" /* default */], null),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Section__["a" /* default */], {
+      title: 'Giving',
+      image: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].giving,
+      linkTo: __WEBPACK_IMPORTED_MODULE_1__constants_routes__["a" /* default */].giving
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_SectionSeparator__["a" /* default */], null),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Section__["a" /* default */], {
+      title: 'Connect',
+      image: __WEBPACK_IMPORTED_MODULE_2__images_images__["a" /* default */].connect,
+      linkTo: __WEBPACK_IMPORTED_MODULE_1__constants_routes__["a" /* default */].connect
+    })
+  )
 );
 
 /* harmony default export */ __webpack_exports__["a"] = (Home);
@@ -53740,8 +53734,6 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     } else {
       const message = this.state.messages[this.state.currentMessage];
       const currentTab = this.state.currentTab;
-
-      console.log(message.date);
 
       const tabClass = index => {
         return __WEBPACK_IMPORTED_MODULE_1_classnames___default()({
@@ -54300,7 +54292,7 @@ exports = module.exports = __webpack_require__(7)(undefined);
 
 
 // module
-exports.push([module.i, ".message-header-container {\r\n  position: relative;\r\n}\r\n\r\n.message-header-img {\r\n  max-width: 100%;\r\n}\r\n\r\n.message-header-tabs {\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n\r\n.message-tab {\r\n  float: left;\r\n  padding-bottom: 0.6em;\r\n  margin-left: 2em;\r\n  font-size: 0.75em;\r\n  font-weight: 600;\r\n  color: white;\r\n  border-bottom: 0.8em solid;\r\n}\r\n\r\n.message-active-tab {\r\n  border-bottom-color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.message-inactive-tab {\r\n  opacity: 0.5;\r\n  border-bottom-color: transparent;\r\n}\r\n\r\n.message-container {\r\n  padding: 1.2em;\r\n}\r\n\r\n.message-title {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 2.3em;\r\n  font-weight: 500;\r\n}\r\n\r\n.message-date {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 0 0;\r\n  color: grey;\r\n}\r\n\r\n.message-number-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 1em 0;\r\n  color: grey;\r\n}\r\n\r\n.message-html {}\r\n\r\n.message-html h1, h2, h3, h4, h5, h6 {\r\n  font-size: 1.3em;\r\n  font-weight: 500;\r\n  margin: 1em 0 0 0;\r\n}\r\n\r\n.message-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: upper-alpha;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.message-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.message-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.message-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n}\r\n\r\n.message-html ol ol li {\r\n  margin: 0.2em 0 0 0;\r\n  padding: 0;\r\n}\r\n\r\n.study-title {\r\n  font-size: 1.6em;\r\n  margin: 0;\r\n}\r\n\r\n.study-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  font-style: italic;\r\n  color: grey;\r\n}\r\n\r\n.study-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.study-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.study-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.song-title {\r\n  font-size: 1.5em;\r\n  margin: 0;\r\n}\r\n\r\n.song-html iframe {\r\n  margin-top: 1em;\r\n  max-width: 100%;\r\n}\r\n\r\n.song-divider {\r\n  margin: 2em 0;\r\n}", ""]);
+exports.push([module.i, ".message-header-container {\r\n  position: relative;\r\n}\r\n\r\n.message-header-img {\r\n  max-width: 100%;\r\n}\r\n\r\n.message-header-tabs {\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n\r\n.message-tab {\r\n  float: left;\r\n  cursor: pointer;\r\n  padding-bottom: 0.6em;\r\n  margin-left: 2em;\r\n  font-size: 0.75em;\r\n  font-weight: 600;\r\n  color: white;\r\n  border-bottom: 0.8em solid;\r\n}\r\n\r\n.message-active-tab {\r\n  border-bottom-color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.message-inactive-tab {\r\n  opacity: 0.5;\r\n  border-bottom-color: transparent;\r\n}\r\n\r\n.message-inactive-tab:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.message-container {\r\n  padding: 1.2em;\r\n}\r\n\r\n.message-title {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 2.3em;\r\n  font-weight: 500;\r\n}\r\n\r\n.message-date {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 0 0;\r\n  color: grey;\r\n}\r\n\r\n.message-number-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 1em 0;\r\n  color: grey;\r\n}\r\n\r\n.message-html {}\r\n\r\n.message-html ol {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style-type: none;\r\n  font-size: 1.4em;\r\n}\r\n\r\n.message-html ol li {\r\n  margin: 1em 0;\r\n}\r\n\r\n.message-html ol ol {\r\n  margin: 0 1em;\r\n  padding: 0;\r\n  list-style-type: upper-alpha;\r\n  font-size: 0.6em;\r\n}\r\n\r\n.message-html ol ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.message-html ol ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 1em;\r\n}\r\n\r\n.message-html ol ol ol li {\r\n  margin: 0.2em 0 0 0;\r\n  padding: 0;\r\n}\r\n\r\n.study-title {\r\n  font-size: 1.6em;\r\n  margin: 0;\r\n}\r\n\r\n.study-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  font-style: italic;\r\n  color: grey;\r\n}\r\n\r\n.study-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.study-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.study-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.song-title {\r\n  font-size: 1.5em;\r\n  margin: 0;\r\n}\r\n\r\n.song-html iframe {\r\n  margin-top: 1em;\r\n  max-width: 100%;\r\n}\r\n\r\n.song-divider {\r\n  margin: 2em 0;\r\n}\r\n", ""]);
 
 // exports
 
