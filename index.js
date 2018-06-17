@@ -54836,8 +54836,18 @@ exports.push([module.i, ".home-header {\r\n  position: relative;\r\n}\r\n\r\n.ho
 
 
 const themeColor = __WEBPACK_IMPORTED_MODULE_8__constants_colors__["c" /* MESSAGE_THEME */];
+const MESSAGE_KEY = 0;
+const STUDY_KEY = 1;
+const SUPPLEMENT_KEY = 2;
+const SONGS_KEY = 3;
 
 __WEBPACK_IMPORTED_MODULE_3_react_modal___default.a.setAppElement('#app');
+
+window.oncontextmenu = event => {
+  event.preventDefault();
+  event.stopPropagation();
+  return false;
+};
 
 class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   constructor(props) {
@@ -54845,7 +54855,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     this.state = {
       modalIsOpen: false,
       currentMessage: 0,
-      currentTab: 0,
+      currentTab: MESSAGE_KEY,
       messages: []
     };
     this.goNextWeek = this.goNextWeek.bind(this);
@@ -54857,7 +54867,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentWillMount() {
-    let dataURL = 'http://mycit.info/wp-json/wp/v2/messages';
+    let dataURL = 'https://mycit.info/wp-json/wp/v2/messages';
     fetch(dataURL).then(res => res.json()).then(res => {
       this.setState({
         messages: res.map(val => {
@@ -54872,6 +54882,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             outline: message.outline,
             studyChapter: message.study_chapter,
             studyGuide: message.study_guide,
+            supplementaryMaterial: message.supplementary_material,
             setList: message.set_list,
             childrenSetList: message.children_set_list
           };
@@ -54935,7 +54946,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       };
 
       let tabContent;
-      if (currentTab === 0) {
+      if (currentTab === MESSAGE_KEY) {
         tabContent = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'message-container' },
@@ -54959,7 +54970,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'message-html', dangerouslySetInnerHTML: { __html: message.outline } })
         );
-      } else if (currentTab === 1) {
+      } else if (currentTab === STUDY_KEY) {
         tabContent = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'message-container' },
@@ -54976,7 +54987,27 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'study-html', dangerouslySetInnerHTML: { __html: message.studyGuide } })
         );
-      } else if (currentTab === 2) {
+      } else if (currentTab === SUPPLEMENT_KEY) {
+        tabContent = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'message-container' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'message-html', dangerouslySetInnerHTML: { __html: message.supplementaryMaterial } })
+        );
+      } else if (currentTab === SONGS_KEY) {
+        let childrenSetList;
+        if (message.childrenSetList) {
+          childrenSetList = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'song-divider' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'h1',
+              { className: 'song-title', style: { color: themeColor } },
+              'Children\'s set list:'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'song-html', dangerouslySetInnerHTML: { __html: message.childrenSetList } })
+          );
+        }
         tabContent = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'message-container' },
@@ -54986,13 +55017,16 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             'This week\'s set list:'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'song-html', dangerouslySetInnerHTML: { __html: message.setList } }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'song-divider' }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'h1',
-            { className: 'song-title', style: { color: themeColor } },
-            'Children\'s set list:'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'song-html', dangerouslySetInnerHTML: { __html: message.childrenSetList } })
+          childrenSetList
+        );
+      }
+
+      let supplementTab;
+      if (message.supplementaryMaterial) {
+        supplementTab = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: tabClass(SUPPLEMENT_KEY), onClick: () => this.setState({ currentTab: SUPPLEMENT_KEY }) },
+          'SUPPLEMENT'
         );
       }
 
@@ -55008,17 +55042,18 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             { className: 'message-header-tabs' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: tabClass(0), onClick: () => this.setState({ currentTab: 0 }) },
-              'MESSAGE OUTLINE'
+              { className: tabClass(MESSAGE_KEY), onClick: () => this.setState({ currentTab: MESSAGE_KEY }) },
+              'MESSAGE'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: tabClass(1), onClick: () => this.setState({ currentTab: 1 }) },
+              { className: tabClass(STUDY_KEY), onClick: () => this.setState({ currentTab: STUDY_KEY }) },
               'STUDY GUIDE'
             ),
+            supplementTab,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: tabClass(2), onClick: () => this.setState({ currentTab: 2 }) },
+              { className: tabClass(SONGS_KEY), onClick: () => this.setState({ currentTab: SONGS_KEY }) },
               'SONGS'
             )
           )
@@ -57977,7 +58012,7 @@ exports = module.exports = __webpack_require__(7)(undefined);
 
 
 // module
-exports.push([module.i, ".header-bar {\r\n  height: 3.2em;\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.header-bar-back-button {\r\n  height: 2em;\r\n  width: 2em;\r\n  padding: 0.5em;\r\n}\r\n\r\n.header-bar-title {\r\n  font-size: 1.25em;\r\n  font-weight: 700;\r\n  margin: auto;\r\n  color: white;\r\n}\r\n\r\n.header-bar-right {\r\n  height: 2em;\r\n  width: 2em;\r\n  padding: 0.5em;\r\n}\r\n", ""]);
+exports.push([module.i, ".header-bar {\r\n  height: 3.2em;\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.header-bar-back-button {\r\n  height: 2em;\r\n  width: 2em;\r\n  padding: 0.5em;\r\n  cursor: pointer;\r\n}\r\n\r\n.header-bar-title {\r\n  font-size: 1.25em;\r\n  font-weight: 700;\r\n  margin: auto;\r\n  color: white;\r\n}\r\n\r\n.header-bar-right {\r\n  height: 2em;\r\n  width: 2em;\r\n  padding: 0.5em;\r\n}\r\n", ""]);
 
 // exports
 
@@ -58067,7 +58102,7 @@ exports = module.exports = __webpack_require__(7)(undefined);
 
 
 // module
-exports.push([module.i, ".message-header-container {\r\n  position: relative;\r\n}\r\n\r\n.message-header-img {\r\n  max-width: 100%;\r\n}\r\n\r\n.message-header-tabs {\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n\r\n.message-tab {\r\n  float: left;\r\n  cursor: pointer;\r\n  padding-bottom: 0.6em;\r\n  margin-left: 2em;\r\n  font-size: 0.75em;\r\n  font-weight: 600;\r\n  color: white;\r\n  border-bottom: 0.8em solid;\r\n}\r\n\r\n.message-active-tab {\r\n  border-bottom-color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.message-inactive-tab {\r\n  opacity: 0.5;\r\n  border-bottom-color: transparent;\r\n}\r\n\r\n.message-inactive-tab:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.message-container {\r\n  padding: 1.2em;\r\n}\r\n\r\n.message-title {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 2.3em;\r\n  font-weight: 500;\r\n}\r\n\r\n.message-date {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 0 0;\r\n  color: grey;\r\n}\r\n\r\n.message-number-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 1em 0;\r\n  color: grey;\r\n}\r\n\r\n.message-html {}\r\n\r\n.message-html ol {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style-type: none;\r\n  font-size: 1.4em;\r\n}\r\n\r\n.message-html ol li {\r\n  margin: 1em 0;\r\n}\r\n\r\n.message-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: upper-alpha;\r\n  font-size: 0.6em;\r\n}\r\n\r\n.message-html ol ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.message-html ol ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 1em;\r\n}\r\n\r\n.message-html ol ol ol li {\r\n  margin: 0.2em 0 0 0;\r\n  padding: 0;\r\n}\r\n\r\n.message-html ul {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n}\r\n\r\n.study-title {\r\n  font-size: 1.6em;\r\n  margin: 0;\r\n}\r\n\r\n.study-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  font-style: italic;\r\n  color: grey;\r\n}\r\n\r\n.study-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.study-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.study-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.song-title {\r\n  font-size: 1.5em;\r\n  margin: 0;\r\n}\r\n\r\n.song-html iframe {\r\n  margin-top: 1em;\r\n  max-width: 100%;\r\n}\r\n\r\n.song-divider {\r\n  margin: 2em 0;\r\n}\r\n\r\n.message-modal {\r\n  position: absolute;\r\n  top: 35%;\r\n  left: 20%;\r\n  right: 20%;\r\n  border: none;\r\n  background-color: white;\r\n}\r\n\r\n.message-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: rgba(0,0,0,0.3);\r\n}\r\n\r\n.ReactModal__Body--open {\r\n  overflow-y: hidden;\r\n}\r\n", ""]);
+exports.push([module.i, ".message-header-container {\r\n  position: relative;\r\n}\r\n\r\n.message-header-img {\r\n  width: 100%;\r\n}\r\n\r\n.message-header-tabs {\r\n  position: absolute;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n  width: 100%;\r\n  bottom: 0;\r\n}\r\n\r\n.message-tab {\r\n  cursor: pointer;\r\n  padding: 0.5em;\r\n  font-size: 0.7em;\r\n  font-weight: 600;\r\n  color: white;\r\n  border-bottom: 0.8em solid;\r\n}\r\n\r\n.message-active-tab {\r\n  border-bottom-color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.message-inactive-tab {\r\n  opacity: 0.5;\r\n  border-bottom-color: transparent;\r\n}\r\n\r\n.message-inactive-tab:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.message-container {\r\n  padding: 1.2em;\r\n}\r\n\r\n.message-title {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 2.3em;\r\n  font-weight: 500;\r\n}\r\n\r\n.message-date {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 0 0;\r\n  color: grey;\r\n}\r\n\r\n.message-number-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 1em 0;\r\n  color: grey;\r\n}\r\n\r\n.message-html {}\r\n\r\n.message-html p {\r\n  margin: 0;\r\n  font-size: 0.9em;\r\n}\r\n\r\n.message-html ol {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style-type: none;\r\n  font-size: 1.4em;\r\n}\r\n\r\n.message-html ol li {\r\n  margin: 1em 0;\r\n}\r\n\r\n.message-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: upper-alpha;\r\n  font-size: 0.6em;\r\n}\r\n\r\n.message-html ol ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.message-html ol ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 1em;\r\n}\r\n\r\n.message-html ol ol ol li {\r\n  margin: 0.2em 0 0 0;\r\n  padding: 0;\r\n}\r\n\r\n.message-html ul {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n}\r\n\r\n.study-title {\r\n  font-size: 1.6em;\r\n  margin: 0;\r\n}\r\n\r\n.study-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  font-style: italic;\r\n  color: grey;\r\n}\r\n\r\n.study-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.study-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.study-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.song-title {\r\n  font-size: 1.5em;\r\n  margin: 0;\r\n}\r\n\r\n.song-html iframe {\r\n  margin-top: 1em;\r\n  max-width: 100%;\r\n}\r\n\r\n.song-divider {\r\n  margin: 2em 0;\r\n}\r\n\r\n.message-modal {\r\n  position: absolute;\r\n  top: 35%;\r\n  left: 20%;\r\n  right: 20%;\r\n  border: none;\r\n  background-color: white;\r\n}\r\n\r\n.message-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: rgba(0,0,0,0.3);\r\n}\r\n\r\n.ReactModal__Body--open {\r\n  overflow-y: hidden;\r\n}\r\n", ""]);
 
 // exports
 
@@ -58330,44 +58365,49 @@ exports.push([module.i, ".news-header-container {\r\n  position: relative;\r\n}\
 const themeColor = __WEBPACK_IMPORTED_MODULE_2__constants_colors__["b" /* GIVING_THEME */];
 
 class Giving extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-	render() {
-		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-			'div',
-			{ className: 'giving' },
-			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_HeaderBar__["a" /* default */], {
-				goBack: this.props.history.goBack,
-				title: 'Giving',
-				color: themeColor
-			}),
-			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
-				{ className: 'giving-container' },
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'h1',
-					{ className: 'giving-title' },
-					'You can\'t outgive God'
-				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'p',
-					{ className: 'giving-description' },
-					'All donations are safe and secure. Online giving receipts will be provided directly from Planning Center Giving. Please follow the instructions provided through the link below.'
-				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					null,
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'a',
-						{
-							className: 'giving-btn',
-							style: { backgroundColor: themeColor },
-							href: 'https://churchintoronto.churchcenteronline.com/giving'
-						},
-						'Give Online'
-					)
-				)
-			)
-		);
-	}
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'giving' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_HeaderBar__["a" /* default */], {
+        goBack: this.props.history.goBack,
+        title: 'Giving',
+        color: themeColor
+      }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'giving-container' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h1',
+          { className: 'giving-title' },
+          'Give to our Mission'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'giving-description' },
+          'When you give, you are honouring God with your money and helping us lead people into a life-changing relationship with Jesus Christ.'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'giving-description' },
+          'All donations are safe and secure. Online giving receipts will be provided directly from Planning Center Giving. Please follow the instructions provided through the link below.'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            {
+              className: 'giving-btn',
+              style: { backgroundColor: themeColor },
+              href: 'https://churchintoronto.churchcenteronline.com/giving'
+            },
+            'Give Online'
+          )
+        )
+      )
+    );
+  }
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Giving);
@@ -58523,6 +58563,8 @@ const alertOptions = {
 	transition: 'fade'
 };
 
+// const app_id = '309a52586fd38fc7ae18e4fcce41fdee6de813185b30c69cca599000fe5a81fb'
+// const secret = '8c1c905e0e31cfe9cb17bae68f803e6cd971a9d2feff1980390549d7267b35e7';
 const app_id = '8a253088577f90fe8abd972f3d0d8a7f215a09368606dd69ce2807e1286f11e5';
 const secret = '84c12963c49f42d6b2a226f73b36dead2e8157b0e61535e18dfa58df0d6256b3';
 const headers = new Headers();
