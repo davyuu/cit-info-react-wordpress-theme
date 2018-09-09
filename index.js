@@ -56798,7 +56798,6 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             { className: 'connect-form-row' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_select__["a" /* default */], {
               className: 'connect-form-select',
-              autoFocus: true,
               simpleValue: true,
               name: 'description',
               options: options,
@@ -66191,7 +66190,6 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
             { className: 'connect-form-row' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_select__["a" /* default */], {
               className: 'volunteer-form-select',
-              autoFocus: true,
               simpleValue: true,
               name: 'description',
               options: options,
