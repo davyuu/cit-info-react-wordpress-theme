@@ -27009,16 +27009,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_base_64___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_base_64__);
 
 
-const dev_app_id = '8a253088577f90fe8abd972f3d0d8a7f215a09368606dd69ce2807e1286f11e5';
-const dev_secret = '84c12963c49f42d6b2a226f73b36dead2e8157b0e61535e18dfa58df0d6256b3';
-const prod_app_id = '309a52586fd38fc7ae18e4fcce41fdee6de813185b30c69cca599000fe5a81fb';
-const prod_secret = '8c1c905e0e31cfe9cb17bae68f803e6cd971a9d2feff1980390549d7267b35e7';
-
-const app_id = prod_app_id;
-const secret = prod_secret;
+const APP_ID = "309a52586fd38fc7ae18e4fcce41fdee6de813185b30c69cca599000fe5a81fb";
+const APP_SECRET = "8c1c905e0e31cfe9cb17bae68f803e6cd971a9d2feff1980390549d7267b35e7";
 
 const planningCenterHeaders = new Headers();
-planningCenterHeaders.append("Authorization", "Basic " + __WEBPACK_IMPORTED_MODULE_0_base_64___default.a.encode(`${app_id}:${secret}`));
+planningCenterHeaders.append("Authorization", "Basic " + __WEBPACK_IMPORTED_MODULE_0_base_64___default.a.encode(`${APP_ID}:${APP_SECRET}`));
 
 const postRequest = (url, successHandler, errorHandler, body, headers) => {
   fetch(url, {
@@ -56543,16 +56538,15 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       phone: '',
       description: '',
       message: '',
+      subscribe: false,
       loading: false
     };
   }
 
   onConnectFormSubmit() {
-    if (this.isFormValid()) {
-      if (!this.state.loading) {
-        this.setState({ loading: true });
-        this.createPerson();
-      }
+    if (this.isFormValid() && !this.state.loading) {
+      this.setState({ loading: true });
+      this.createPerson();
     }
   }
 
@@ -56666,9 +56660,10 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       email,
       phone,
       description,
-      message
+      message,
+      subscribe: subscribe ? 'yes' : 'no'
     };
-    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message'];
+    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message', 'subscribe'];
     data.formDataNameOrder = JSON.stringify(fields);
     data.formGoogleSheetName = "responses";
     const body = Object.keys(data).map(function (k) {
@@ -56830,6 +56825,22 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               value: this.state.message,
               onChange: e => this.setState({ message: e.target.value })
             })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'connect-form-row checkbox' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+              className: 'connect-form-checkbox',
+              type: 'checkbox',
+              id: 'subscribe',
+              value: this.state.subscribe,
+              onChange: e => this.setState({ subscribe: e.target.checked })
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { className: 'connect-form-label', htmlFor: 'subscribe' },
+              'Keep me updated on CIT events'
+            )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
@@ -65763,7 +65774,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, ".connect {}\r\n\r\n.connect-container {\r\n  padding: 1.5em;\r\n}\r\n\r\n.connect-title {\r\n  width: 70%;\r\n  margin: 0;\r\n  font-size: 2em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-description {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  align-items: flex-start;\r\n}\r\n\r\n.connect-form-label {\r\n  margin: 0;\r\n  font-size: 0.8em;\r\n}\r\n\r\n.connect-form-row {\r\n  width: 100%;\r\n  display: flex;\r\n}\r\n\r\n.connect-form-input {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  padding: 8px;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  border-radius: 4px;\r\n  border-color: #ccc;\r\n  -webkit-appearance: none;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-input.left {\r\n  margin-right: 4px;\r\n}\r\n\r\n.connect-form-input.right {\r\n  margin-left: 4px;\r\n}\r\n\r\n.connect-form-input.textarea {\r\n  height: 6em;\r\n}\r\n\r\n.connect-form-select {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-submit {\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n  padding: 0.8em 0;\r\n  margin: 1em 0;\r\n  border-radius: 0.3em;\r\n  text-decoration: none;\r\n  font-size: 01em;\r\n  color: white;\r\n}\r\n\r\n.connect-loading {\r\n  position: fixed;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  background: rgba(0,0,0,0.3);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#alert-container{\r\n  margin-bottom: 5em !important;\r\n}\r\n", ""]);
+exports.push([module.i, ".connect {}\r\n\r\n.connect-container {\r\n  padding: 1.5em;\r\n}\r\n\r\n.connect-title {\r\n  width: 70%;\r\n  margin: 0;\r\n  font-size: 2em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-description {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  align-items: flex-start;\r\n}\r\n\r\n.connect-form-label {\r\n  margin: 0;\r\n  font-size: 0.8em;\r\n}\r\n\r\n.connect-form-row {\r\n  width: 100%;\r\n  display: flex;\r\n}\r\n\r\n.connect-form-row.checkbox {\r\n  margin: 4px 0;\r\n}\r\n\r\n.connect-form-input {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  padding: 8px;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  border-radius: 4px;\r\n  border-color: #ccc;\r\n  -webkit-appearance: none;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-input.left {\r\n  margin-right: 4px;\r\n}\r\n\r\n.connect-form-input.right {\r\n  margin-left: 4px;\r\n}\r\n\r\n.connect-form-input.textarea {\r\n  height: 6em;\r\n}\r\n\r\n.connect-form-select {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-checkbox {\r\n  margin: 2px 8px;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-submit {\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n  padding: 0.8em 0;\r\n  margin: 1em 0;\r\n  border-radius: 0.3em;\r\n  text-decoration: none;\r\n  font-size: 01em;\r\n  color: white;\r\n}\r\n\r\n.connect-loading {\r\n  position: fixed;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  background: rgba(0,0,0,0.3);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#alert-container{\r\n  margin-bottom: 5em !important;\r\n}\r\n", ""]);
 
 // exports
 
@@ -65800,7 +65811,6 @@ class Confirm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 			{ className: 'confirm' },
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_HeaderBar__["a" /* default */], {
 				goBack: this.props.history.goBack,
-				title: __WEBPACK_IMPORTED_MODULE_4__constants_strings__["a" /* default */].confirm_header,
 				color: themeColor
 			}),
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -65842,7 +65852,6 @@ class Confirm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 "use strict";
 const strings = {
-	confirm_header: 'Connect',
 	confirm_title: 'Thanks! We\'ll be in touch soon',
 	confirm_description: 'One of our pastors will be in touch in the next few days to follow up with you and answer any questions you may have about our church.'
 };
@@ -66044,9 +66053,10 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       email,
       phone,
       description,
-      message
+      message,
+      subscribe: ''
     };
-    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message'];
+    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message', 'subscribe'];
     data.formDataNameOrder = JSON.stringify(fields);
     data.formGoogleSheetName = "responses";
     const body = Object.keys(data).map(function (k) {
