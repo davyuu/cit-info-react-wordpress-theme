@@ -56625,17 +56625,36 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   createPhoneNumberForPerson(personId) {
     const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/phone_numbers`;
-    const { phone } = this.state;
-    if (!phone && phone === '') {
-      this.sendToSheets();
-      return;
-    }
+
     const body = JSON.stringify({
       data: {
         type: 'PhoneNumber',
         attributes: {
-          number: phone,
+          number: this.state.phone,
           location: "Mobile"
+        }
+      }
+    });
+
+    const successHandler = () => {
+      this.patchSubscribedForPerson(personId);
+    };
+    const errorHandler = () => {
+      this.showError('An error occurred');
+    };
+
+    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, successHandler, errorHandler, body);
+  }
+
+  patchSubscribedForPerson(personId) {
+    const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/field_data`;
+
+    const body = JSON.stringify({
+      data: {
+        type: 'FieldDatum',
+        attributes: {
+          field_definition_id: "187586",
+          value: this.state.subscribe
         }
       }
     });
@@ -56727,8 +56746,8 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           'We know that it\'s important for you to find a church that really fits. We can connect you with one of our pastors to answer any questions you might have about our church\'s beliefs, community, and culture.'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'connect-form' },
+          'form',
+          { className: 'connect-form', autocomplete: 'on' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
             { className: 'connect-form-label' },
@@ -56741,6 +56760,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               className: 'connect-form-input left',
               type: 'text',
               name: 'first name',
+              autocomplete: 'given-name',
               placeholder: 'First name',
               value: this.state.firstName,
               onChange: e => this.setState({ firstName: e.target.value })
@@ -56749,6 +56769,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               className: 'connect-form-input right',
               type: 'text',
               name: 'last name',
+              autocomplete: 'family-name',
               placeholder: 'Last name',
               value: this.state.lastName,
               onChange: e => this.setState({ lastName: e.target.value })
@@ -56766,6 +56787,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               className: 'connect-form-input',
               type: 'text',
               name: 'email',
+              autocomplete: 'email',
               placeholder: 'youremailaddress@example.com',
               value: this.state.email,
               onChange: e => this.setState({ email: e.target.value })
@@ -56781,8 +56803,9 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             { className: 'connect-form-row' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
               className: 'connect-form-input',
-              type: 'number',
+              type: 'tel',
               name: 'phone',
+              autocomplete: 'tel',
               placeholder: '4161234567',
               value: this.state.phone,
               onChange: e => this.setState({ phone: e.target.value })
@@ -65773,7 +65796,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, ".connect {}\r\n\r\n.connect-container {\r\n  padding: 1.5em;\r\n}\r\n\r\n.connect-title {\r\n  width: 70%;\r\n  margin: 0;\r\n  font-size: 2em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-description {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  align-items: flex-start;\r\n}\r\n\r\n.connect-form-label {\r\n  margin: 0;\r\n  font-size: 0.8em;\r\n}\r\n\r\n.connect-form-row {\r\n  width: 100%;\r\n  display: flex;\r\n}\r\n\r\n.connect-form-row.checkbox {\r\n  margin: 4px 0;\r\n}\r\n\r\n.connect-form-input {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  padding: 8px;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  border-radius: 4px;\r\n  border-color: #ccc;\r\n  -webkit-appearance: none;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-input.left {\r\n  margin-right: 4px;\r\n}\r\n\r\n.connect-form-input.right {\r\n  margin-left: 4px;\r\n}\r\n\r\n.connect-form-input.textarea {\r\n  height: 6em;\r\n}\r\n\r\n.connect-form-select {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-checkbox {\r\n  margin: 2px 8px;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-submit {\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n  padding: 0.8em 0;\r\n  margin: 1em 0;\r\n  border-radius: 0.3em;\r\n  text-decoration: none;\r\n  font-size: 01em;\r\n  color: white;\r\n}\r\n\r\n.connect-loading {\r\n  position: fixed;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  background: rgba(0,0,0,0.3);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#alert-container{\r\n  margin-bottom: 5em !important;\r\n}\r\n", ""]);
+exports.push([module.i, ".connect {}\r\n\r\n.connect-container {\r\n  padding: 1.5em;\r\n}\r\n\r\n.connect-title {\r\n  width: 70%;\r\n  margin: 0;\r\n  font-size: 2em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-description {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n}\r\n\r\n.connect-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  align-items: flex-start;\r\n}\r\n\r\n.connect-form-label {\r\n  margin: 0;\r\n  font-size: 0.8em;\r\n}\r\n\r\n.connect-form-row {\r\n  width: 100%;\r\n  display: flex;\r\n}\r\n\r\n.connect-form-row.checkbox {\r\n  margin: 4px 0;\r\n}\r\n\r\n.connect-form-input {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  padding: 8px;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  border-radius: 4px;\r\n  border-color: #ccc;\r\n  -webkit-appearance: none;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-input.left {\r\n  margin-right: 4px;\r\n}\r\n\r\n.connect-form-input.right {\r\n  margin-left: 4px;\r\n}\r\n\r\n.connect-form-input.textarea {\r\n  height: 6em;\r\n}\r\n\r\n.connect-form-select {\r\n  width: 100%;\r\n  margin: 0.5em 0 1em 0;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-checkbox {\r\n  margin: 2px 8px;\r\n  font-size: 0.8em;\r\n  font-weight: 500;\r\n  font-family: 'Lato', sans-serif;\r\n}\r\n\r\n.connect-form-submit {\r\n  display: flex;\r\n  justify-content: center;\r\n  cursor: pointer;\r\n  width: 100%;\r\n  padding: 0.8em 0;\r\n  margin: 1em 0;\r\n  border-radius: 0.3em;\r\n  text-decoration: none;\r\n  font-size: 01em;\r\n  color: white;\r\n}\r\n\r\n.connect-loading {\r\n  position: fixed;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  background: rgba(0,0,0,0.3);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#alert-container{\r\n  margin-bottom: 5em !important;\r\n}\r\n", ""]);
 
 // exports
 
