@@ -56591,13 +56591,18 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     });
 
     const successHandler = res => {
-      this.createEmailForPerson(res.data.id);
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred');
+      const personId = res.data.id;
+
+      Promise.all([this.createEmailForPerson(personId), this.createPhoneNumberForPerson(personId), this.postSubscribedForPerson(personId), this.sendToSheets()]).then(([emailRes, numberRes, subRes, sheetRes]) => {
+        if (!(emailRes && numberRes && subRes && sheetRes)) {
+          this.showSuccess();
+        } else {
+          this.showError('An error occurred');
+        }
+      });
     };
 
-    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, successHandler, errorHandler, body);
+    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, successHandler, this.errorHandler, body);
   }
 
   createEmailForPerson(personId) {
@@ -56613,14 +56618,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       }
     });
 
-    const successHandler = () => {
-      this.createPhoneNumberForPerson(personId);
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred');
-    };
-
-    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, successHandler, errorHandler, body);
+    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, this.successHandler, this.errorHandler, body);
   }
 
   createPhoneNumberForPerson(personId) {
@@ -56636,17 +56634,10 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       }
     });
 
-    const successHandler = () => {
-      this.patchSubscribedForPerson(personId);
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred');
-    };
-
-    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, successHandler, errorHandler, body);
+    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, this.successHandler, this.errorHandler, body);
   }
 
-  patchSubscribedForPerson(personId) {
+  postSubscribedForPerson(personId) {
     const url = `https://api.planningcenteronline.com/people/v2/people/${personId}/field_data`;
 
     const body = JSON.stringify({
@@ -56659,14 +56650,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       }
     });
 
-    const successHandler = () => {
-      this.sendToSheets();
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred');
-    };
-
-    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, successHandler, errorHandler, body);
+    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, this.successHandler, this.errorHandler, body);
   }
 
   sendToSheets() {
@@ -56691,14 +56675,15 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
     const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
 
-    const successHandler = () => {
-      this.showSuccess();
-    };
-    const errorHandler = () => {
-      this.showError('An error occurred');
-    };
+    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, this.successHandler, this.errorHandler, body, headers);
+  }
 
-    __WEBPACK_IMPORTED_MODULE_7__utils_NetworkUtils__["a" /* postRequest */](url, successHandler, errorHandler, body, headers);
+  successHandler() {
+    return true;
+  }
+
+  errorHandler() {
+    return false;
   }
 
   hideErrors() {
@@ -56747,7 +56732,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'form',
-          { className: 'connect-form', autocomplete: 'on' },
+          { className: 'connect-form', autoComplete: 'on' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
             { className: 'connect-form-label' },
@@ -56760,7 +56745,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               className: 'connect-form-input left',
               type: 'text',
               name: 'first name',
-              autocomplete: 'given-name',
+              autoComplete: 'given-name',
               placeholder: 'First name',
               value: this.state.firstName,
               onChange: e => this.setState({ firstName: e.target.value })
@@ -56769,7 +56754,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               className: 'connect-form-input right',
               type: 'text',
               name: 'last name',
-              autocomplete: 'family-name',
+              autoComplete: 'family-name',
               placeholder: 'Last name',
               value: this.state.lastName,
               onChange: e => this.setState({ lastName: e.target.value })
@@ -56787,7 +56772,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               className: 'connect-form-input',
               type: 'text',
               name: 'email',
-              autocomplete: 'email',
+              autoComplete: 'email',
               placeholder: 'youremailaddress@example.com',
               value: this.state.email,
               onChange: e => this.setState({ email: e.target.value })
@@ -56805,7 +56790,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               className: 'connect-form-input',
               type: 'tel',
               name: 'phone',
-              autocomplete: 'tel',
+              autoComplete: 'tel',
               placeholder: '4161234567',
               value: this.state.phone,
               onChange: e => this.setState({ phone: e.target.value })
@@ -66142,8 +66127,8 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
           'Our teams are dedicated to bringing our very best to our God. We would love for you to become part of a team and discover all that God has purposed for your life.'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'volunteer-form' },
+          'form',
+          { className: 'volunteer-form', autoComplete: 'on' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'h2',
             { className: 'volunteer-form-label' },
@@ -66156,6 +66141,7 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
               className: 'volunteer-form-input left',
               type: 'text',
               name: 'first name',
+              autoComplete: 'given-name',
               placeholder: 'First name',
               value: this.state.firstName,
               onChange: e => this.setState({ firstName: e.target.value })
@@ -66164,6 +66150,7 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
               className: 'volunteer-form-input right',
               type: 'text',
               name: 'last name',
+              autoComplete: 'family-name',
               placeholder: 'Last name',
               value: this.state.lastName,
               onChange: e => this.setState({ lastName: e.target.value })
@@ -66181,6 +66168,7 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
               className: 'volunteer-form-input',
               type: 'text',
               name: 'email',
+              autoComplete: 'email',
               placeholder: 'youremailaddress@example.com',
               value: this.state.email,
               onChange: e => this.setState({ email: e.target.value })
@@ -66198,6 +66186,7 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
               className: 'volunteer-form-input',
               type: 'number',
               name: 'phone',
+              autoComplete: 'tel',
               placeholder: '4161234567',
               value: this.state.phone,
               onChange: e => this.setState({ phone: e.target.value })
