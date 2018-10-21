@@ -56553,6 +56553,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       description: '',
       message: '',
       subscribe: false,
+      nextSteps: false,
       loading: false
     };
   }
@@ -56677,7 +56678,7 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   sendToSheets() {
     const url = `https://script.google.com/macros/s/AKfycbxuFGgV8bYE_6X0Hozof7mXLOJ0b2mDWJfhV7o_XTSa8t1_WcfI/exec`;
-    const { firstName, lastName, email, phone, description, message } = this.state;
+    const { firstName, lastName, email, phone, description, message, nextSteps } = this.state;
     const data = {
       type: 'connect',
       firstName,
@@ -56686,9 +56687,10 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       phone,
       description,
       message,
-      subscribe: subscribe ? 'yes' : 'no'
+      subscribe: subscribe ? 'yes' : 'no',
+      nextSteps: nextSteps ? 'yes' : 'no'
     };
-    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message', 'subscribe'];
+    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message', 'subscribe', 'nextSteps'];
     data.formDataNameOrder = JSON.stringify(fields);
     data.formGoogleSheetName = "responses";
     const body = Object.keys(data).map(function (k) {
@@ -56869,6 +56871,22 @@ class Connect extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               'label',
               { className: 'connect-form-label', htmlFor: 'subscribe' },
               'Keep me updated on CIT events'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'connect-form-row checkbox' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+              className: 'connect-form-checkbox',
+              type: 'checkbox',
+              id: 'nextSteps',
+              value: this.state.nextSteps,
+              onChange: e => this.setState({ nextSteps: e.target.checked })
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { className: 'connect-form-label', htmlFor: 'nextSteps' },
+              'Sign me up for a Next Steps Session'
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -66086,10 +66104,9 @@ class Volunteer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       email,
       phone,
       description,
-      message,
-      subscribe: ''
+      message
     };
-    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message', 'subscribe'];
+    const fields = ['type', 'firstName', 'lastName', 'email', 'phone', 'description', 'message'];
     data.formDataNameOrder = JSON.stringify(fields);
     data.formGoogleSheetName = "responses";
     const body = Object.keys(data).map(function (k) {
