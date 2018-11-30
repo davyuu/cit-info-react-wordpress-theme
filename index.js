@@ -56360,30 +56360,119 @@ class Giving extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         { className: 'giving-container' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'h1',
-          { className: 'giving-title' },
-          'Give to our Mission'
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'p',
-          { className: 'giving-description' },
-          'When you give, you are honouring God with your money and helping us lead people into a life-changing relationship with Jesus Christ.'
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'p',
-          { className: 'giving-description' },
-          'All donations are safe and secure. Online giving receipts will be provided directly from Planning Center Giving. Please follow the instructions provided through the link below.'
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
           null,
+          'Give to our mission'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          null,
+          'Thank you for deciding to give to CIT. Your donation helps us fulfill our mission as a church, to lead people into a life changing relationship with Jesus.'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          {
+            className: 'giving-btn',
+            style: { backgroundColor: themeColor },
+            href: 'https://churchintoronto.churchcenteronline.com/giving'
+          },
+          'Give Online'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'giving-description-post' },
+          'All donations are safe and secure. Tax receipts will be emailed to you directly from Church In Toronto at the beginning of the next year. Online giving is provided by ',
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            { href: 'https://planning.center/giving/' },
+            'Planning Center Giving'
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h2',
+          null,
+          'Other Ways To Give'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'section',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h3',
+            null,
+            'e-Transfer'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            null,
+            'Email money transfers are a great way to donate right from your bank account. Just click the link below for instructions on setting it up.'
+          ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'a',
             {
               className: 'giving-btn',
               style: { backgroundColor: themeColor },
-              href: 'https://churchintoronto.churchcenteronline.com/giving'
+              href: 'https://churchintoronto.com/e-transfer/'
             },
-            'Give Online'
+            'Set Up e-Transfer'
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'section',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h3',
+            null,
+            'Text-to-Give'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            null,
+            'Simply text an amount to: ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'b',
+              null,
+              '84321'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            null,
+            'If it\u2019s your first time giving by text, you\u2019ll get a message back with a link to get your giving account set up. Every other time will be as simple as sending a text message.'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'b',
+              null,
+              'Standard Message & Data Rates May Apply'
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'section',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h3',
+            null,
+            'Cash or Cheque'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            null,
+            'If you prefer to give by ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'b',
+              null,
+              'cash or cheque'
+            ),
+            ', you can do so by using the donation envelopes available at church. Once you have completed the information on the front just drop them into the ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'b',
+              null,
+              'offering box'
+            ),
+            ', located just \x03outside the back auditorium doors.'
           )
         )
       )
@@ -56433,7 +56522,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, ".giving-container {\r\n  padding: 1.5em;\r\n}\r\n\r\n.giving-title {\r\n  width: 70%;\r\n  margin: 0;\r\n  font-size: 2.2em;\r\n  font-weight: 500;\r\n}\r\n\r\n.giving-description {\r\n  margin: 1em 0;\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  line-height: 1.5em;\r\n}\r\n\r\n.giving-btn {\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n  padding: 1em 0;\r\n  margin: 2em 0;\r\n  border-radius: 0.3em;\r\n  font-size: 1em;\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n", ""]);
+exports.push([module.i, ".giving-container {\r\n  padding: 1.5em;\r\n}\r\n\r\nh1 {\r\n  margin: 0;\r\n  font-size: 2.1em;\r\n  font-weight: 500;\r\n  letter-spacing: 0.5px;\r\n}\r\n\r\nh2 {\r\n  margin: 0;\r\n  font-size: 1.7em;\r\n  font-weight: 500;\r\n  letter-spacing: 0.5px;\r\n}\r\n\r\nh3 {\r\n  margin: 0.5em 0;\r\n  font-size: 1.2em;\r\n  font-weight: 600;\r\n  letter-spacing: 1px;\r\n}\r\n\r\nhr {\r\n  border: 0.5px solid lightgrey;\r\n  margin: 2em 0;\r\n}\r\n\r\np {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  line-height: 1.5em;\r\n}\r\n\r\nsection {\r\n  margin: 1.5em 0;\r\n}\r\n\r\n.giving-description-post {\r\n  color: grey;\r\n}\r\n\r\n.giving-description-post a {\r\n  text-decoration: underline;\r\n  color: grey;\r\n}\r\n\r\n.giving-btn {\r\n  display: flex;\r\n  justify-content: center;\r\n  width: 100%;\r\n  padding: 1em 0;\r\n  margin: 1.5em 0;\r\n  border-radius: 0.3em;\r\n  font-size: 1em;\r\n  color: white;\r\n  text-decoration: none;\r\n}", ""]);
 
 // exports
 
