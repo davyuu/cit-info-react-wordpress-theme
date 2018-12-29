@@ -52928,6 +52928,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
       let tabContent;
       if (currentTab === MESSAGE_KEY) {
+        const verses = message.messageChapter ? `: ${message.messageChapter}` : null;
         tabContent = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'message-container' },
@@ -52946,12 +52947,17 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             { className: 'message-number-chapter' },
             '#',
             message.messageNumber,
-            ': ',
-            message.messageChapter
+            verses
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'message-html', dangerouslySetInnerHTML: { __html: message.outline } })
         );
       } else if (currentTab === STUDY_KEY) {
+        const verses = message.messageChapter ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'study-chapter' },
+          'Read: ',
+          message.studyChapter
+        ) : null;
         tabContent = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'message-container' },
@@ -52960,12 +52966,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             { className: 'study-title', style: { color: themeColor } },
             'Examining the text & our hearts:'
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'p',
-            { className: 'study-chapter' },
-            'Read: ',
-            message.studyChapter
-          ),
+          verses,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'study-html', dangerouslySetInnerHTML: { __html: message.studyGuide } })
         );
       } else if (currentTab === SUPPLEMENT_KEY) {
@@ -56083,7 +56084,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, ".message-header-container {\r\n  position: relative;\r\n}\r\n\r\n.message-header-img {\r\n  width: 100%;\r\n  max-height: 350px;\r\n  object-fit: cover;\r\n}\r\n\r\n.message-header-tabs {\r\n  position: absolute;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n  width: 100%;\r\n  bottom: 0;\r\n}\r\n\r\n.message-tab {\r\n  cursor: pointer;\r\n  padding: 0.5em;\r\n  font-size: 0.7em;\r\n  font-weight: 600;\r\n  color: white;\r\n  border-bottom: 0.8em solid;\r\n}\r\n\r\n.message-active-tab {\r\n  border-bottom-color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.message-inactive-tab {\r\n  opacity: 0.5;\r\n  border-bottom-color: transparent;\r\n}\r\n\r\n.message-inactive-tab:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.message-container {\r\n  padding: 1.2em;\r\n}\r\n\r\n.message-title {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 2.3em;\r\n  font-weight: 500;\r\n}\r\n\r\n.message-date {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 0 0;\r\n  color: grey;\r\n}\r\n\r\n.message-number-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 1em 0;\r\n  color: grey;\r\n}\r\n\r\n.message-html {}\r\n\r\n.message-html p {\r\n  margin: 0;\r\n  font-size: 0.9em;\r\n}\r\n\r\n.message-html ul {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  font-size: 0.8rem;\r\n}\r\n\r\n.message-html ol {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style-type: none;\r\n  font-size: 1.4em;\r\n}\r\n\r\n.message-html ol li {\r\n  margin: 1em 0;\r\n}\r\n\r\n.message-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: upper-alpha;\r\n  font-size: 0.6em;\r\n}\r\n\r\n.message-html ol ul {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n}\r\n\r\n.message-html ol ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.message-html ol ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 1em;\r\n}\r\n\r\n.message-html ol ol ol li {\r\n  margin: 0.2em 0 0 0;\r\n  padding: 0;\r\n}\r\n\r\n.study-title {\r\n  font-size: 1.6em;\r\n  margin: 0;\r\n}\r\n\r\n.study-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  font-style: italic;\r\n  color: grey;\r\n}\r\n\r\n.study-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.study-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.study-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.study-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  list-style-type: lower-alpha;\r\n}\r\n\r\n.study-html ol ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.song-title {\r\n  font-size: 1.5em;\r\n  margin: 0;\r\n}\r\n\r\n.song-html iframe {\r\n  margin-top: 1em;\r\n  max-width: 100%;\r\n}\r\n\r\n.song-divider {\r\n  margin: 2em 0;\r\n}\r\n\r\n.message-modal {\r\n  position: absolute;\r\n  top: 35%;\r\n  left: 20%;\r\n  right: 20%;\r\n  border: none;\r\n  background-color: white;\r\n}\r\n\r\n.message-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: rgba(0,0,0,0.3);\r\n}\r\n\r\n.ReactModal__Body--open {\r\n  overflow-y: hidden;\r\n}\r\n", ""]);
+exports.push([module.i, ".message-header-container {\r\n  position: relative;\r\n}\r\n\r\n.message-header-img {\r\n  width: 100%;\r\n  max-height: 350px;\r\n  object-fit: cover;\r\n}\r\n\r\n.message-header-tabs {\r\n  position: absolute;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n  width: 100%;\r\n  bottom: 0;\r\n}\r\n\r\n.message-tab {\r\n  cursor: pointer;\r\n  padding: 0.5em;\r\n  font-size: 0.7em;\r\n  font-weight: 600;\r\n  color: white;\r\n  border-bottom: 0.8em solid;\r\n}\r\n\r\n.message-active-tab {\r\n  border-bottom-color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.message-inactive-tab {\r\n  opacity: 0.5;\r\n  border-bottom-color: transparent;\r\n}\r\n\r\n.message-inactive-tab:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.message-container {\r\n  padding: 1.2em;\r\n}\r\n\r\n.message-title {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 2.3em;\r\n  font-weight: 500;\r\n}\r\n\r\n.message-date {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 0 0;\r\n  color: grey;\r\n}\r\n\r\n.message-number-chapter {\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  margin: 0.5em 0 1em 0;\r\n  color: grey;\r\n}\r\n\r\n.message-html {}\r\n\r\n.message-html p {\r\n  margin: 0;\r\n  font-size: 0.9em;\r\n}\r\n\r\n.message-html ul {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  font-size: 0.8rem;\r\n}\r\n\r\n.message-html ol {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style-type: none;\r\n  font-size: 1.4em;\r\n}\r\n\r\n.message-html ol li {\r\n  margin: 1em 0;\r\n}\r\n\r\n.message-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: upper-alpha;\r\n  font-size: 0.6em;\r\n}\r\n\r\n.message-html ol ul {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n}\r\n\r\n.message-html ol ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.message-html ol ol ol {\r\n  margin: 0 0 0 1em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 1em;\r\n}\r\n\r\n.message-html ol ol ol li {\r\n  margin: 0.2em 0 0 0;\r\n  padding: 0;\r\n}\r\n\r\n.study-title {\r\n  font-size: 1.6em;\r\n  margin: 0 0 1em;\r\n}\r\n\r\n.study-chapter {\r\n  margin: 0 0 1em;\r\n  font-size: 0.9em;\r\n  font-weight: 500;\r\n  font-style: italic;\r\n  color: grey;\r\n}\r\n\r\n.study-html ol {\r\n  margin: 0 1.5em;\r\n  padding: 0;\r\n  list-style-type: decimal;\r\n  font-size: 0.92em;\r\n}\r\n\r\n.study-html ol span {\r\n  margin: 0 0 0 0.3em;\r\n}\r\n\r\n.study-html ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.study-html ol ol {\r\n  margin: 0 0 0 1em;\r\n  list-style-type: lower-alpha;\r\n}\r\n\r\n.study-html ol ol li {\r\n  margin: 0.5em 0 0 0;\r\n}\r\n\r\n.song-title {\r\n  font-size: 1.5em;\r\n  margin: 0;\r\n}\r\n\r\n.song-html iframe {\r\n  margin-top: 1em;\r\n  max-width: 100%;\r\n}\r\n\r\n.song-divider {\r\n  margin: 2em 0;\r\n}\r\n\r\n.message-modal {\r\n  position: absolute;\r\n  top: 35%;\r\n  left: 20%;\r\n  right: 20%;\r\n  border: none;\r\n  background-color: white;\r\n}\r\n\r\n.message-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: rgba(0,0,0,0.3);\r\n}\r\n\r\n.ReactModal__Body--open {\r\n  overflow-y: hidden;\r\n}\r\n", ""]);
 
 // exports
 
