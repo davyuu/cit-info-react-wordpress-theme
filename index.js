@@ -52928,6 +52928,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
       let tabContent;
       if (currentTab === MESSAGE_KEY) {
+        const number = message.messageNumber ? `#${message.messageNumber}` : null;
         const verses = message.messageChapter ? `: ${message.messageChapter}` : null;
         tabContent = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
@@ -52945,8 +52946,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'p',
             { className: 'message-number-chapter' },
-            '#',
-            message.messageNumber,
+            number,
             verses
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'message-html', dangerouslySetInnerHTML: { __html: message.outline } })
@@ -53003,6 +53003,15 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         );
       }
 
+      let studyGuideTab;
+      if (message.studyGuide) {
+        studyGuideTab = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: tabClass(STUDY_KEY), onClick: () => this.setState({ currentTab: STUDY_KEY }) },
+          'STUDY GUIDE'
+        );
+      }
+
       let supplementTab;
       if (message.supplementaryMaterial) {
         supplementTab = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -53027,11 +53036,7 @@ class Message extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
               { className: tabClass(MESSAGE_KEY), onClick: () => this.setState({ currentTab: MESSAGE_KEY }) },
               'MESSAGE'
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              { className: tabClass(STUDY_KEY), onClick: () => this.setState({ currentTab: STUDY_KEY }) },
-              'STUDY GUIDE'
-            ),
+            studyGuideTab,
             supplementTab,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
